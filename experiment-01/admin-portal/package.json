@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
+    "build-docker": "remix vite:build && docker build -t k8s-experiments-01-admin-portal .",
     "dev": "node ./server.js",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "run-docker": "docker run -p 3000:3000 k8s-experiments-01-admin-portal",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc"
   },
