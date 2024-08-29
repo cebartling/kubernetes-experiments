@@ -1,0 +1,18 @@
+microservice: ## general service details
+  name: kubernetes-experiments-01-portal
+  namespace: kubernetes-experiments-01
+  replicas: 1
+
+workload:  ## container specific configurations
+  image: rslim087/kubernetes-course-grade-submission-portal
+  port: 5001
+  resources:
+    memory: "768Mi"
+    cpu: "200m"
+  livenessDelay: 15
+
+env:   ## environment variables
+  API_HOST: kubernetes-experiments-01-api
+
+
+## upgrade to include host for ingress
