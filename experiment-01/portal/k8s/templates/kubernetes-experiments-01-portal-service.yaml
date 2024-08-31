@@ -9,6 +9,6 @@ spec:
     app.kubernetes.io/instance: {{ .Values.microservice.name }}
   ports:
     - port: {{ .Values.workload.port }}
-      targetPort: {{ .Values.workload.port }}
+      targetPort: {{ .Values.workload.targetPort }}
 
 

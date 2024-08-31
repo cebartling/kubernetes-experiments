@@ -4,8 +4,9 @@ microservice: ## general service details
   replicas: 1
 
 workload:  ## container specific configurations
-  image: rslim087/kubernetes-course-grade-submission-portal
-  port: 5001
+  image: cebartling/k8s-experiments-01-portal
+  port: 3000
+  targetPort: 5001
   resources:
     memory: "768Mi"
     cpu: "200m"
