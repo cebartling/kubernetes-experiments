@@ -1,10 +1,10 @@
 # Kubernetes Experiments 1: Portal application
 
 ## Docker packaging
-
 1. Create a new repository for your images in Docker Hub. In this case, the repository is `k8s-experiments-01-portal`.
-1. Tag the local image: `docker tag k8s-experiments-01-portal:latest cebartling/k8s-experiments-01-portal:latest`
-1. Push the image to Docker Hub: `docker push cebartling/k8s-experiments-01-portal:latest`
+2. Build the image: `npm run build-docker` 
+3. Tag the local image: `docker tag k8s-experiments-01-portal:latest cebartling/k8s-experiments-01-portal:latest`
+4. Push the image to Docker Hub: `docker push cebartling/k8s-experiments-01-portal:latest`
 
 
 
