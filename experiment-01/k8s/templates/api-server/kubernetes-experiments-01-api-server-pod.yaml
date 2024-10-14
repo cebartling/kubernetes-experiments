@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubernetes-experiments-01-api-server
+  labels:
+    app.kubernetes.io/name: kubernetes-experiments-01
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/instance: kubernetes-experiments-01-api-server
+spec:
+  containers:
+    - name: kubernetes-experiments-01-api-server
+      image: cebartling/k8s-experiments-01-api-server
+      resources:
+        requests:
+          memory: "1024Mi"
+          cpu: "200m"
+        limits:
+          memory: "1024Mi"
+      ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
