@@ -43,4 +43,12 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     kubectl port-forward kubernetes-experiments-01-api-server 8082:3000
     ```
 
+### Cleaning up the deployment
+
+1. Delete the pods:
+    ```shell
+    kubectl delete -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-pod.yaml
+    kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
+    kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-pod.yaml
+    ```
 
