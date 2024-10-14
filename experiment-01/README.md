@@ -20,6 +20,7 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
    ```
 2. Apply the pod files:
     ```shell
+    kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-pod.yaml
     kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
     kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-pod.yaml
     ```
@@ -29,6 +30,8 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     ```
 4. Check the logs of each pod:
     ```shell
+    kubectl logs kubernetes-experiments-01-api-server
+
     kubectl logs kubernetes-experiments-01-portal
    
     kubectl logs kubernetes-experiments-01-admin-portal
@@ -37,6 +40,7 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     ```shell
     kubectl port-forward kubernetes-experiments-01-portal 8080:3000
     kubectl port-forward kubernetes-experiments-01-admin-portal 8081:3000
+    kubectl port-forward kubernetes-experiments-01-api-server 8082:3000
     ```
 
 
