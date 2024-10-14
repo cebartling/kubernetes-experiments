@@ -21,18 +21,22 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
 2. Apply the pod files:
     ```shell
     kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
+    kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-pod.yaml
     ```
-3. Ensure the pod starts up correctly:
+3. Ensure the pods start up correctly:
     ```shell
     kubectl get pods
     ```
-4. Check the logs of the pod:
+4. Check the logs of each pod:
     ```shell
     kubectl logs kubernetes-experiments-01-portal
+   
+    kubectl logs kubernetes-experiments-01-admin-portal
     ```
 5. Set up port forwarding to the pod:
     ```shell
     kubectl port-forward kubernetes-experiments-01-portal 8080:3000
+    kubectl port-forward kubernetes-experiments-01-admin-portal 8081:3000
     ```
 
 
