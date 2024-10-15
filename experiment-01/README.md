@@ -18,7 +18,13 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     ```shell
     kubectl config use-context docker-desktop
    ```
-2. Apply the pod files:
+   
+2. Create the namespace for the deployment:
+    ```shell
+    kubectl apply -f ./k8s/templates/kubernetes-experiments-01-namespace.yaml
+    ```
+   
+3. Apply the pod files:
     ```shell
     kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-pod.yaml
     kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
@@ -29,11 +35,11 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-pod.yaml
     kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
     ```
-3. Ensure the pods start up correctly:
+4. Ensure the pods start up correctly:
     ```shell
     kubectl get pods
     ```
-4. Check the logs of each pod:
+5. Check the logs of each pod:
     ```shell
     kubectl logs kubernetes-experiments-01-api-server
 
@@ -42,12 +48,12 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     kubectl logs kubernetes-experiments-01-admin-portal
     ```
 
-5. Check the services:
+6. Check the services:
     ```shell
     kubectl get services
     ```
    
-6. Access the services:
+7. Access the services:
     - Portal: http://localhost:32000
     - Admin Portal: http://localhost:32001
 
