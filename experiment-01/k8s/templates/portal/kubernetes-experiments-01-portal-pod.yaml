@@ -10,6 +10,9 @@ spec:
   containers:
     - name: kubernetes-experiments-01-portal
       image: cebartling/k8s-experiments-01-portal
+      env:
+        - name: API_SERVER_URL
+          value: "http://kubernetes-experiments-01-api-server:3000"
       resources:
         requests:
           memory: "512Mi"

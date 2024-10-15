@@ -21,6 +21,7 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
 2. Apply the pod files:
     ```shell
     kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-pod.yaml
+    kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
    
     kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
     kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-service.yaml
@@ -40,15 +41,24 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
    
     kubectl logs kubernetes-experiments-01-admin-portal
     ```
-5. Set up port forwarding to the pod:
+
+5. Check the services:
     ```shell
-    kubectl port-forward kubernetes-experiments-01-api-server 8082:3000
+    kubectl get services
     ```
+   
+6. Access the services:
+    - Portal: http://localhost:32000
+    - Admin Portal: http://localhost:32001
+
 
 ### Cleaning up the deployment
 
 1. Delete the pods:
     ```shell
+    kubectl delete -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
+    kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-service.yaml
+    kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
     kubectl delete -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-pod.yaml
     kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
     kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-pod.yaml
@@ -57,5 +67,7 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
 2. Ensure the pods are deleted:
     ```shell
     kubectl get pods
+   
+    kubectl get services
     ```
 
