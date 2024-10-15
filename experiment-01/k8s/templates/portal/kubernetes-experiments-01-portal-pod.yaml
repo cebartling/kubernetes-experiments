@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: kubernetes-experiments-01-portal
+  namespace: kubernetes-experiments-01
   labels:
     app.kubernetes.io/name: kubernetes-experiments-01
     app.kubernetes.io/component: frontend

@@ -23,6 +23,10 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     ```shell
     kubectl apply -f ./k8s/templates/kubernetes-experiments-01-namespace.yaml
     ```
+   Then check the namespace:
+    ```shell
+    kubectl get namespaces
+    ```
    
 3. Apply the pod files:
     ```shell
