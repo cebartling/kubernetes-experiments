@@ -7,7 +7,7 @@
 kubectl delete -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-deployment.yaml
 kubectl delete -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
 
-kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
+kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-deployment.yaml
 kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-service.yaml
 
 kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-pod.yaml
