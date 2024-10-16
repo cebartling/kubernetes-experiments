@@ -8,6 +8,11 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/instance: kubernetes-experiments-01-api-server
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   template:
     metadata:
       labels:
