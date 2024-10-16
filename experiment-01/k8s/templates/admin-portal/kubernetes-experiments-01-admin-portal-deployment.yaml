@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-experiments-01-admin-portal
+  namespace: kubernetes-experiments-01
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: kubernetes-experiments-01-admin-portal
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kubernetes-experiments-01
+        app.kubernetes.io/component: frontend
+        app.kubernetes.io/instance: kubernetes-experiments-01-admin-portal
+    spec:
+      containers:
+        - name: kubernetes-experiments-01-admin-portal
+          image: cebartling/k8s-experiments-01-admin-portal
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: API_SERVER_URL
+              value: "http://kubernetes-experiments-01-api-server:3000"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+      restartPolicy: Always
