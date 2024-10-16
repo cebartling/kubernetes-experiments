@@ -18,66 +18,51 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     ```shell
     kubectl config use-context docker-desktop
    ```
-   
-2. Create the namespace for the deployment:
-    ```shell
-    kubectl apply -f ./k8s/templates/kubernetes-experiments-01-namespace.yaml
-    ```
-   Then check the namespace:
-    ```shell
-    kubectl get namespaces
-    ```
-   
-3. Apply the pod files:
-    ```shell
-    kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-pod.yaml
-    kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
-   
-    kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
-    kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-service.yaml
-   
-    kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-pod.yaml
-    kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
-    ```
-4. Ensure the pods start up correctly:
-    ```shell
-    kubectl get pods
-    ```
-5. Check the logs of each pod:
-    ```shell
-    kubectl logs kubernetes-experiments-01-api-server
 
-    kubectl logs kubernetes-experiments-01-portal
-   
-    kubectl logs kubernetes-experiments-01-admin-portal
+2. Create the namespace, deployments and services in the k8s cluster:
+    ```shell
+    ./k8s/cluster-up.zsh
     ```
 
-6. Check the services:
+3. Check the pods, services and deployments:
     ```shell
-    kubectl get services
+    kubectl get pods,services,deployments --namespace=kubernetes-experiments-01
     ```
-   
-7. Access the services:
+
+4. Access the services:
     - Portal: http://localhost:32000
     - Admin Portal: http://localhost:32001
 
-
 ### Cleaning up the deployment
 
-1. Delete the pods:
+1. Delete the namespace, deployments and services:
     ```shell
-    kubectl delete -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
-    kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-service.yaml
-    kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
-    kubectl delete -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-pod.yaml
-    kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
-    kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-pod.yaml
-    ```
-   
-2. Ensure the pods are deleted:
-    ```shell
-    kubectl get pods
-   
-    kubectl get services
+   ./k8s/cluster-down.zsh
     ```
 
+2. Ensure all objects are deleted:
+    ```shell
+   kubectl get pods,services,deployments --namespace=kubernetes-experiments-01    
+   ```
+
+## Debugging the Kubernetes deployment
+
+### Describe the pods, services and deployments
+
+```shell
+kubectl describe deployment kubernetes-experiments-01-api-server --namespace=kubernetes-experiments-01
+
+kubectl describe service kubernetes-experiments-01-api-server --namespace=kubernetes-experiments-01
+
+kubectl describe pods,services,deployments --namespace=kubernetes-experiments-01
+```
+
+### Check the pod logs
+
+```shell
+kubectl logs kubernetes-experiments-01-api-server
+
+kubectl logs kubernetes-experiments-01-portal
+
+kubectl logs kubernetes-experiments-01-admin-portal
+```
