@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-experiments-01-api-server
+  namespace: kubernetes-experiments-01
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: kubernetes-experiments-01-api-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kubernetes-experiments-01
+        app.kubernetes.io/component: api-server
+        app.kubernetes.io/instance: kubernetes-experiments-01-api-server
+    spec:
+      containers:
+        - name: kubernetes-experiments-01-api-server
+          image: cebartling/k8s-experiments-01-api-server
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "200m"
+            limits:
+              memory: "1024Mi"
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+      restartPolicy: Always

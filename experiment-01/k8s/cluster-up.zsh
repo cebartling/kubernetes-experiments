@@ -7,7 +7,7 @@
 kubectl apply -f ./k8s/templates/kubernetes-experiments-01-namespace.yaml
 
 # Apply the pods and services
-kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-pod.yaml
+kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-deployment.yaml
 kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
 
 kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-pod.yaml
