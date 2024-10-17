@@ -12,7 +12,14 @@
    2. Tag the local image: `docker tag k8s-experiments-01-api-server:latest cebartling/k8s-experiments-01-api-server:latest`
    3. Push the image to Docker Hub: `docker push cebartling/k8s-experiments-01-api-server:latest`
 
+## Liveness and Readiness Probes
 
+- The application has a `/health/livenessCheck` endpoint that returns a 200 status code. This endpoint is used by
+  Kubernetes to determine if the application is healthy and ready to receive traffic.
+- The application has a `/health/readinessCheck` endpoint that returns a 200 status code. This endpoint is used by
+  Kubernetes to determine if the application is ready to receive traffic.
+
+  
 ## Project setup
 
 ```bash
