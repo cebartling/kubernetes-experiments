@@ -4,7 +4,7 @@ metadata:
   name: kubernetes-experiments-01-api-server
   namespace: kubernetes-experiments-01
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app.kubernetes.io/instance: kubernetes-experiments-01-api-server
@@ -24,6 +24,18 @@ spec:
         - name: kubernetes-experiments-01-api-server
           image: cebartling/k8s-experiments-01-api-server
           imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /health/livenessCheck
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /health/readinessCheck
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 15
           resources:
             requests:
               memory: "1024Mi"

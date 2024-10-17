@@ -24,15 +24,27 @@ spec:
         - name: kubernetes-experiments-01-admin-portal
           image: cebartling/k8s-experiments-01-admin-portal
           imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /livenessCheck
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /readinessCheck
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 15
           env:
             - name: API_SERVER_URL
               value: "http://kubernetes-experiments-01-api-server:3000"
           resources:
             requests:
-              memory: "512Mi"
+              memory: "1024Mi"
               cpu: "200m"
             limits:
-              memory: "512Mi"
+              memory: "1024Mi"
           ports:
             - containerPort: 3000
               name: http
