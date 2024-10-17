@@ -7,9 +7,10 @@
 
 ## Docker packaging
 1. Create a new repository for your images in Docker Hub. In this case, the repository is `k8s-experiments-01-api-server`.
-2. Build the image: `npm run build-docker`
-3. Tag the local image: `docker tag k8s-experiments-01-api-server:latest cebartling/k8s-experiments-01-api-server:latest`
-4. Push the image to Docker Hub: `docker push cebartling/k8s-experiments-01-api-server:latest`
+2. Run the shell script: `./build-docker-image.sh`
+   1. Build the image: `npm run build-docker`
+   2. Tag the local image: `docker tag k8s-experiments-01-api-server:latest cebartling/k8s-experiments-01-api-server:latest`
+   3. Push the image to Docker Hub: `docker push cebartling/k8s-experiments-01-api-server:latest`
 
 
 ## Project setup
