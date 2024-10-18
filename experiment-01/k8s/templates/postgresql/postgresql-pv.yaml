@@ -1,11 +1,13 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: postgres-pv-volume
+  name: postgres-persistent-volume
   namespace: kubernetes-experiments-01
   labels:
     type: local
-    app: postgres
+    app.kubernetes.io/name: kubernetes-experiments-01
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/instance: postgres-persistent-volume
 spec:
   storageClassName: manual
   capacity:

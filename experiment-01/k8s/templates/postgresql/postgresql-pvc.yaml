@@ -1,10 +1,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: postgres-pv-claim
+  name: postgres-persistent-volume-claim
   namespace: kubernetes-experiments-01
   labels:
-    app: postgres
+    app.kubernetes.io/name: kubernetes-experiments-01
+    app.kubernetes.io/component: persistent-volume-claim
+    app.kubernetes.io/instance: postgres-persistent-volume-claim
 spec:
   storageClassName: manual
   accessModes:

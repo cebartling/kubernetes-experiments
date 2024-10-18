@@ -10,7 +10,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: postgres
+    app.kubernetes.io/instance: postgres
   ports:
     - protocol: TCP
       port: 5432
