@@ -13,7 +13,12 @@ kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-servic
 kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-deployment.yaml
 kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
 
-kubectl get pods,services --namespace=kubernetes-experiments-01
+# Remove PostgreSQL
+kubectl delete -f ./k8s/templates/postgresql/postgresql-service.yaml
+kubectl delete -f ./k8s/templates/postgresql/postgresql-statefulset.yaml
+kubectl delete -f ./k8s/templates/postgresql/postgresql-configmap.yaml
+
+kubectl get pods,deployments,services,statefulsets --namespace=kubernetes-experiments-01
 
 # delete the namespace
 kubectl delete -f ./k8s/templates/kubernetes-experiments-01-namespace.yaml

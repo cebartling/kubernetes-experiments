@@ -6,6 +6,11 @@
 # Apply the namespace
 kubectl apply -f ./k8s/templates/kubernetes-experiments-01-namespace.yaml
 
+# Build out PostgreSQL
+kubectl apply -f ./k8s/templates/postgresql/postgresql-configmap.yaml
+kubectl apply -f ./k8s/templates/postgresql/postgresql-statefulset.yaml
+kubectl apply -f ./k8s/templates/postgresql/postgresql-service.yaml
+
 # Apply the pods and services
 kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-deployment.yaml
 kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
