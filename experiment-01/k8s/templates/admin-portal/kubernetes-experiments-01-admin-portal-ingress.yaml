@@ -9,7 +9,7 @@ spec:
     - http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: "/admin-portal"
             backend:
               service:
                 name: kubernetes-experiments-01-admin-portal
