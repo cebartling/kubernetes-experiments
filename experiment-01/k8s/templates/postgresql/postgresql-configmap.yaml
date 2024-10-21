@@ -8,5 +8,5 @@ metadata:
     app.kubernetes.io/component: configurations
     app.kubernetes.io/instance: postgres-configmap
 data:
-  POSTGRES_DB: postgresdb
-  POSTGRES_USER: admin
+  POSTGRES_DB: 'postgresdb'
+  POSTGRES_USER: 'admin'

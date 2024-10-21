@@ -21,6 +21,7 @@ kubectl delete -f ./k8s/templates/redis/redis-configmap.yaml
 # Remove PostgreSQL
 kubectl delete -f ./k8s/templates/postgresql/postgresql-service.yaml
 kubectl delete -f ./k8s/templates/postgresql/postgresql-statefulset.yaml
+kubectl delete -f ./k8s/templates/postgresql/postgresql-secret.yaml
 kubectl delete -f ./k8s/templates/postgresql/postgresql-configmap.yaml
 
 kubectl get pods,deployments,services,statefulsets --namespace=kubernetes-experiments-01

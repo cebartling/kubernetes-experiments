@@ -8,6 +8,7 @@ kubectl apply -f ./k8s/templates/kubernetes-experiments-01-namespace.yaml
 
 # Build out PostgreSQL
 kubectl apply -f ./k8s/templates/postgresql/postgresql-configmap.yaml
+kubectl apply -f ./k8s/templates/postgresql/postgresql-secret.yaml
 kubectl apply -f ./k8s/templates/postgresql/postgresql-statefulset.yaml
 kubectl apply -f ./k8s/templates/postgresql/postgresql-service.yaml
 
