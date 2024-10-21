@@ -13,6 +13,11 @@ kubectl delete -f ./k8s/templates/portal/kubernetes-experiments-01-portal-servic
 kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-deployment.yaml
 kubectl delete -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
 
+# Remove Redis
+kubectl delete -f ./k8s/templates/redis/redis-service.yaml
+kubectl delete -f ./k8s/templates/redis/redis-statefulset.yaml
+kubectl delete -f ./k8s/templates/redis/redis-configmap.yaml
+
 # Remove PostgreSQL
 kubectl delete -f ./k8s/templates/postgresql/postgresql-service.yaml
 kubectl delete -f ./k8s/templates/postgresql/postgresql-statefulset.yaml

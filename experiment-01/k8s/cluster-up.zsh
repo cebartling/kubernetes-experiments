@@ -11,6 +11,11 @@ kubectl apply -f ./k8s/templates/postgresql/postgresql-configmap.yaml
 kubectl apply -f ./k8s/templates/postgresql/postgresql-statefulset.yaml
 kubectl apply -f ./k8s/templates/postgresql/postgresql-service.yaml
 
+# Build out Redis
+kubectl apply -f ./k8s/templates/redis/redis-configmap.yaml
+kubectl apply -f ./k8s/templates/redis/redis-statefulset.yaml
+kubectl apply -f ./k8s/templates/redis/redis-service.yaml
+
 # Apply the pods and services
 kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-deployment.yaml
 kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
