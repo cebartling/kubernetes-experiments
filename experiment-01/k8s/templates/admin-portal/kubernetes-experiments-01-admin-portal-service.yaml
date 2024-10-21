@@ -4,12 +4,11 @@ metadata:
   name: kubernetes-experiments-01-admin-portal
   namespace: kubernetes-experiments-01
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app.kubernetes.io/instance: kubernetes-experiments-01-admin-portal
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 32001
-
+      protocol: TCP
 

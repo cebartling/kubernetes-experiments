@@ -23,8 +23,10 @@ kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server
 
 kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-deployment.yaml
 kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-service.yaml
+kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-ingress.yaml
 
-kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-deployment.yaml
-kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
+#kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-deployment.yaml
+#kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
+#kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-ingress.yaml
 
 kubectl get pods,services,deployment,statefulset --namespace=kubernetes-experiments-01

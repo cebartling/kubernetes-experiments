@@ -18,25 +18,30 @@ Ensure you have built and pushed all Docker images before deploying to Kubernete
     ```shell
     kubectl config use-context docker-desktop
    ```
+   
+2. Install nginx ingress controller:
+    ```shell
+   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+    ```
 
-2. Create the namespace, deployments and services in the k8s cluster:
+3. Create the namespace, deployments and services in the k8s cluster:
     ```shell
     ./k8s/cluster-up.zsh
     ```
 
-3. Check the pods, services and deployments:
+4. Check the pods, services and deployments:
     ```shell
     kubectl get pods,services,deployments --namespace=kubernetes-experiments-01
     ```
    
-4. View the logs for the PostgreSQL pods:
+5. View the logs for the PostgreSQL pods:
     ```shell
     kubectl logs pod/postgres-0 --namespace=kubernetes-experiments-01
    
     kubectl logs pod/postgres-1 --namespace=kubernetes-experiments-01
     ```
 
-5. Access the services:
+6. Access the services:
     - Portal: http://localhost:32000
     - Admin Portal: http://localhost:32001
 
