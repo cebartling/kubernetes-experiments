@@ -1,0 +1,55 @@
+apiVersion: v2
+name: kubernetes-experiments-01-api-server
+description: A Helm chart for deploying the Kubernetes Experiments 1 API server, a Nest.js microservice.
+
+# This is the chart version. This version number should be incremented each time you make changes to the chart.
+version: 0.0.1
+
+# This is the version of the application being packaged in this chart.
+appVersion: "1.0.0"
+
+## Keywords help users search for the chart in Helm Hub
+#keywords:
+#  - sample
+#  - application
+#  - helm
+#
+## The home URL for the chart, typically the project homepage
+#home: https://example.com/my-sample-chart
+#
+## The sources URL(s) for the chart
+#sources:
+#  - https://github.com/myorg/my-sample-chart
+
+# A list of maintainers for the chart
+maintainers:
+  - name: Christopher Bartling
+    email: chris.bartling@gmail.com
+
+# The icon URL for the chart (optional)
+#icon: https://example.com/assets/sample-chart-icon.png
+
+## The chart's license (optional)
+#license: Apache-2.0
+#
+## A list of dependencies this chart depends on (optional)
+#dependencies:
+#  - name: redis
+#    version: ">=14.0.0"
+#    repository: "https://charts.bitnami.com/bitnami"
+#
+## Any additional annotations for the chart (optional)
+#annotations:
+#  category: Infrastructure
+#
+## Kubernetes version compatibility (optional)
+#kubeVersion: ">=1.18.0"
+
+# This is an optional field for specifying the chart's type.
+# 'application' indicates a chart that is intended to be deployed as an application.
+# 'library' indicates a chart that provides utilities or services used by other charts.
+type: application
+
+
+
+

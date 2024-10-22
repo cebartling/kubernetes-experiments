@@ -1,0 +1,22 @@
+microservice: ## general service details
+  name: kubernetes-experiments-01-api-server
+  namespace: kubernetes-experiments-01
+  replicas: 2
+
+workload: ## container specific configurations
+  image: cebartling/k8s-experiments-01-api-server
+  port: 3000
+  targetPort: 3000
+  resources:
+    memory: "1024Mi"
+    cpu: "200m"
+  livenessDelay: 15
+  livenessPeriod: 15
+  readinessDelay: 15
+  readinessPeriod: 15
+
+env: ## environment variables
+
+secrets: ## base64-encoded secrets
+
+
