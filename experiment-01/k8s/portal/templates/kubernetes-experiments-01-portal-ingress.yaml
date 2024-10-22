@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kubernetes-experiments-01-portal-ingress
-  namespace: kubernetes-experiments-01
+  name: {{ .Values.microservice.name }}-ingress
+  namespace: {{ .Values.microservice.namespace }}
 spec:
   ingressClassName: nginx
   rules:
@@ -12,6 +12,6 @@ spec:
             path: "/portal"
             backend:
               service:
-                name: kubernetes-experiments-01-portal
+                name: {{ .Values.microservice.name }}
                 port:
-                  number: 3000
+                  number: {{ .Values.workload.port }}
