@@ -1,0 +1,18 @@
+microservice: ## general service details
+  name: postgres
+  namespace: kubernetes-experiments-01
+  replicas: 2
+
+workload: ## container specific configurations
+  image: postgres:latest
+  containerPort: 5432
+  targetPort: 5432
+  storageCapacity: 5Gi
+
+env: ## environment variables
+  POSTGRES_DB: 'postgresdb'
+  POSTGRES_USER: 'admin'
+
+secrets: ## base64-encoded secrets
+  POSTGRES_PASSWORD: 'cG9zdGdyZXMK'
+

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.microservice.name }}-configmap
+  namespace: {{ .Values.microservice.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.microservice.namespace }}
+    app.kubernetes.io/component: configurations
+    app.kubernetes.io/instance: {{ .Values.microservice.name }}-configmap
+data:
+  POSTGRES_DB: {{ .Values.env.POSTGRES_DB | quote }}
+  POSTGRES_USER: {{ .Values.env.POSTGRES_USER | quote }}

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.microservice.name }}-service
+  namespace: {{ .Values.microservice.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.microservice.namespace }}
+    app.kubernetes.io/component: service
+    app.kubernetes.io/instance: {{ .Values.microservice.name }}-service
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/instance: {{ .Values.microservice.name }}
+  ports:
+    - port: {{ .Values.workload.clientPort }}
+      targetPort:  {{ .Values.workload.clientTargetPort }}
+      name: client
+    - port:  {{ .Values.workload.gossipPort }}
+      targetPort:  {{ .Values.workload.gossipTargetPort }}
+      name: gossip

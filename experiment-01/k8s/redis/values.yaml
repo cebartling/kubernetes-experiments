@@ -1,0 +1,26 @@
+microservice: ## general service details
+  name: redis-cluster
+  namespace: kubernetes-experiments-01
+  replicas: 2
+
+workload: ## container specific configurations
+  image: redis:latest
+  containerName: redis
+  clientPort: 6379
+  clientTargetPort: 6379
+  gossipPort: 16379
+  gossipTargetPort: 16379
+#  resources:
+#    memory: "1024Mi"
+#    cpu: "200m"
+#  livenessDelay: 15
+#  livenessPeriod: 15
+#  readinessDelay: 15
+#  readinessPeriod: 15
+
+#env: ## environment variables
+#  API_SERVER_URL: http://kubernetes-experiments-01-api-server:3000
+
+#secrets: ## base64-encoded secrets
+
+

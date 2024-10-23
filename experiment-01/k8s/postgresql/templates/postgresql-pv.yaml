@@ -1,0 +1,18 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ .Values.microservice.name }}-persistent-volume
+  namespace: {{ .Values.microservice.namespace }}
+  labels:
+    type: local
+    app.kubernetes.io/name: {{ .Values.microservice.namespace }}
+    app.kubernetes.io/component: persistent-volume
+    app.kubernetes.io/instance: {{ .Values.microservice.name }}-persistent-volume
+spec:
+  storageClassName: manual
+  capacity:
+    storage: {{ .Values.workload.storageCapacity }}
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data"

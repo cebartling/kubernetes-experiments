@@ -6,32 +6,11 @@
 # Apply the namespace
 kubectl apply -f ./templates/kubernetes-experiments-01-namespace.yaml
 
-# Build out PostgreSQL
-#kubectl apply -f ./k8s/templates/postgresql/postgresql-configmap.yaml
-#kubectl apply -f ./k8s/templates/postgresql/postgresql-secret.yaml
-#kubectl apply -f ./k8s/templates/postgresql/postgresql-statefulset.yaml
-#kubectl apply -f ./k8s/templates/postgresql/postgresql-service.yaml
-
-# Build out Redis
-#kubectl apply -f ./k8s/templates/redis/redis-configmap.yaml
-#kubectl apply -f ./k8s/templates/redis/redis-statefulset.yaml
-#kubectl apply -f ./k8s/templates/redis/redis-service.yaml
-
-# Apply the pods and services
-#kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-deployment.yaml
-#kubectl apply -f ./k8s/templates/api-server/kubernetes-experiments-01-api-server-service.yaml
-
-#kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-deployment.yaml
-#kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-service.yaml
-#kubectl apply -f ./k8s/templates/portal/kubernetes-experiments-01-portal-ingress.yaml
-
-cd ./admin-portal || exit
-helm package .
-helm install kubernetes-experiments-01-admin-portal-0.0.1.tgz --namespace=kubernetes-experiments-01
-cd ..
-
-#kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-deployment.yaml
-#kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-service.yaml
-#kubectl apply -f ./k8s/templates/admin-portal/kubernetes-experiments-01-admin-portal-ingress.yaml
+helm install postgres ./postgresql/postgres-0.0.1.tgz
+helm install redis-cluster ./redis/redis-0.0.1.tgz
+helm install kubernetes-experiments-01-api-server ./api-server/kubernetes-experiments-01-api-server-0.0.1.tgz
+helm install kubernetes-experiments-01-portal ./portal/kubernetes-experiments-01-portal-0.0.1.tgz
+helm install kubernetes-experiments-01-admin-portal ./admin-portal/kubernetes-experiments-01-admin-portal-0.0.1.tgz
 
 kubectl get pods,services,deployment,statefulset --namespace=kubernetes-experiments-01
+

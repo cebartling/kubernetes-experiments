@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: redis-cluster
-  namespace: kubernetes-experiments-01
+  name: {{ .Values.microservice.name }}
+  namespace: {{ .Values.microservice.namespace }}
   labels:
-    app.kubernetes.io/name: kubernetes-experiments-01
+    app.kubernetes.io/name: {{ .Values.microservice.namespace }}
     app.kubernetes.io/component: statefulset
-    app.kubernetes.io/instance: redis-cluster
+    app.kubernetes.io/instance: {{ .Values.microservice.name }}
 spec:
-  serviceName: redis-cluster
-  replicas: 2
+  serviceName: {{ .Values.microservice.name }}
+  replicas: {{ .Values.microservice.replicas }}
   selector:
     matchLabels:
-      app: redis-cluster
+      app: {{ .Values.microservice.name }}
   template:
     metadata:
       labels:
-        app: redis-cluster
+        app: {{ .Values.microservice.name }}
     spec:
       containers:
-        - name: redis
-          image: redis:latest
+        - name: {{ .Values.workload.containerName }}
+          image: {{ .Values.workload.image }}
           ports:
-            - containerPort: 6379
+            - containerPort: {{ .Values.workload.clientPort }}
               name: client
-            - containerPort: 16379
+            - containerPort: {{ .Values.workload.gossipPort }}
               name: gossip
-          command: ["/conf/update-node.sh", "redis-server", "/conf/redis.conf"]
+          command: [ "/conf/update-node.sh", "redis-server", "/conf/redis.conf" ]
           env:
             - name: POD_IP
               valueFrom:
@@ -42,7 +42,7 @@ spec:
       volumes:
         - name: conf
           configMap:
-            name: redis-cluster
+            name: {{ .Values.microservice.name }}
             defaultMode: 0755
   volumeClaimTemplates:
     - metadata:

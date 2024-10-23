@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: redis-cluster
-  namespace: kubernetes-experiments-01
+  name: {{ .Values.microservice.name }}-configmap
+  namespace: {{ .Values.microservice.namespace }}
   labels:
-    app.kubernetes.io/name: kubernetes-experiments-01
+    app.kubernetes.io/name: {{ .Values.microservice.namespace }}
     app.kubernetes.io/component: configurations
-    app.kubernetes.io/instance: redis-configmap
+    app.kubernetes.io/instance: {{ .Values.microservice.name }}-configmap
 data:
   update-node.sh: |
     #!/bin/sh
