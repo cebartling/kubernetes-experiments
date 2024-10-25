@@ -12,7 +12,6 @@ resource "azurerm_resource_group" "default" {
   }
 }
 
-
 resource "azurerm_log_analytics_workspace" "default" {
   location            = azurerm_resource_group.default.location
   name                = "experiment-02-log-analytics"
