@@ -14,14 +14,18 @@ variable "aks_cluster_name" {
   default = "experiment-02-aks-cluster"
 }
 
+variable "dns_prefix" {
+  default = "experiment-02-k8s"
+}
+
 variable "tag_environment" {
   default = "Demo"
 }
 
-variable "appId" {
+variable "client_id" {
   description = "Azure Kubernetes Service Cluster service principal"
 }
 
-variable "password" {
+variable "client_secret" {
   description = "Azure Kubernetes Service Cluster password"
 }

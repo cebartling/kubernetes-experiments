@@ -15,7 +15,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   name                = var.aks_cluster_name
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
-  dns_prefix          = "experiment-02-k8s"
+  dns_prefix          = var.dns_prefix
   kubernetes_version  = "1.30.2"
 
   default_node_pool {
@@ -26,8 +26,8 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 
   service_principal {
-    client_id     = var.appId
-    client_secret = var.password
+    client_id     = var.client_id
+    client_secret = var.client_secret
   }
 
   role_based_access_control_enabled = true
