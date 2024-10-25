@@ -3,8 +3,8 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "default" {
-  name     = "experiment-02-rg"
-  location = "West US 2"
+  name     = var.resource_group_name
+  location = var.resource_group_location
 
   tags = {
     environment = var.tag_environment
@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "default" {
 }
 
 resource "azurerm_kubernetes_cluster" "default" {
-  name                = "experiment-02-aks"
+  name                = var.aks_cluster_name
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   dns_prefix          = "experiment-02-k8s"
