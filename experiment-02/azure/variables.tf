@@ -33,3 +33,7 @@ variable "client_secret" {
 variable "subscription_id" {
   description = "Azure Subscription ID"
 }
+
+variable "vm_size" {
+  default = "Standard_D2_v2"
+}
