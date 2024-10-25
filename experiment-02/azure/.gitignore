@@ -3,3 +3,4 @@ set-env.sh
 terraform.tfstate
 terraform.tfstate.*
 terraform.tfvars
+.terraform.tfstate.lock.info
