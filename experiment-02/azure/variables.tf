@@ -3,11 +3,11 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-    default = "experiment-02-rg"
+  default = "experiment-02-rg"
 }
 
 variable "resource_group_location" {
-    default = "West US 2"
+  default = "West US 2"
 }
 
 variable "aks_cluster_name" {
