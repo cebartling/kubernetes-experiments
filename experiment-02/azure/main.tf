@@ -12,6 +12,19 @@ resource "azurerm_resource_group" "default" {
   }
 }
 
+
+resource "azurerm_log_analytics_workspace" "default" {
+  location            = azurerm_resource_group.default.location
+  name                = "experiment-02-log-analytics"
+  resource_group_name = azurerm_resource_group.default.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+
+  tags = {
+    environment = var.tag_environment
+  }
+}
+
 resource "azurerm_kubernetes_cluster" "default" {
   name                = var.aks_cluster_name
   location            = azurerm_resource_group.default.location
@@ -32,6 +45,10 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 
   role_based_access_control_enabled = true
+
+  oms_agent {
+    log_analytics_workspace_id = azurerm_log_analytics_workspace.default.id
+  }
 
   tags = {
     environment = var.tag_environment
