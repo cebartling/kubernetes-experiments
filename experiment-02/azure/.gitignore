@@ -1,5 +1,5 @@
 set-env.sh
 .terraform/
 terraform.tfstate
-terraform.tfstate.backup
+terraform.tfstate.*
 terraform.tfvars
