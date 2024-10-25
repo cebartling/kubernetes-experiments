@@ -29,3 +29,7 @@ variable "client_id" {
 variable "client_secret" {
   description = "Azure Kubernetes Service Cluster password"
 }
+
+variable "subscription_id" {
+  description = "Azure Subscription ID"
+}
