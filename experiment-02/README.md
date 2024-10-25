@@ -6,13 +6,17 @@ This is a simple Next.js application that is deployed to Azure Kubernetes Servic
 
 ### Azure Cloud Provisioning
 
+The Azure resources are provisioned using Terraform. Make sure you have Terraform installed on your machine. The
+Terraform configuration is located in the `./azure` directory.
+
 1. Change directory to the `./azure` directory:
 
     ```bash
     cd azure
     ```
 
-2. Create the `terraform.tfvars` file in the `./azure` directory and populate it with the following variables from your Azure subscription:
+2. Create the `terraform.tfvars` file in the `./azure` directory and populate it with the following variables from your
+   Azure subscription:
 
     ```bash
     client_id       = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
