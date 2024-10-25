@@ -3,6 +3,9 @@ provider "azurerm" {
   subscription_id = var.subscription_id
 }
 
+provider "azapi" {
+}
+
 resource "azurerm_resource_group" "default" {
   name     = var.resource_group_name
   location = var.resource_group_location
