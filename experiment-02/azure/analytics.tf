@@ -26,3 +26,4 @@ resource "azurerm_log_analytics_solution" "default" {
     environment = var.tag_environment
   }
 }
+

@@ -23,6 +23,7 @@ resource "azurerm_kubernetes_cluster" "default" {
     log_analytics_workspace_id = azurerm_log_analytics_workspace.default.id
   }
 
+
   tags = {
     environment = var.tag_environment
   }
