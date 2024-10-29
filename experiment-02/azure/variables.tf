@@ -37,3 +37,11 @@ variable "subscription_id" {
 variable "vm_size" {
   default = "Standard_D2_v2"
 }
+
+variable "metric_labels_allowlist" {
+  default = null
+}
+
+variable "metric_annotations_allowlist" {
+  default = null
+}

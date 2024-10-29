@@ -12,17 +12,16 @@ resource "azurerm_kubernetes_cluster" "default" {
     os_disk_size_gb = 30
   }
 
-  service_principal {
-    client_id     = var.client_id
-    client_secret = var.client_secret
+  identity {
+    type = "SystemAssigned"
   }
 
   role_based_access_control_enabled = true
 
-  oms_agent {
-    log_analytics_workspace_id = azurerm_log_analytics_workspace.default.id
+  monitor_metrics {
+    annotations_allowed = var.metric_annotations_allowlist
+    labels_allowed      = var.metric_labels_allowlist
   }
-
 
   tags = {
     environment = var.tag_environment

@@ -37,7 +37,19 @@ output "cluster_password" {
 }
 
 # Output the grafana url for usability
-output "grafana_url" {
-  value = azurerm_dashboard_grafana.default.endpoint
+# output "grafana_url" {
+#   value = azurerm_dashboard_grafana.default.endpoint
+# }
+
+output "monitoring_account_id" {
+  value = azurerm_monitor_workspace.default.id
 }
 
+output "application_insights_instrumentation_key" {
+  value = azurerm_application_insights.default.instrumentation_key
+  sensitive = true
+}
+
+output "application_insights_app_id" {
+  value = azurerm_application_insights.default.app_id
+}
